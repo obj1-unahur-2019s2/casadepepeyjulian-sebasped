@@ -15,9 +15,20 @@ object casaDePepeYJulian {
 	// incorrecto, tiene que ser una variable del método
 	//	var comidita
 	
-	method comprar(cosa) {
+	method comprar(cosa) { 
 		cosas.add(cosa)
-	}	
+		self.gastar(cosa.precio())   // agregado para la parte 4
+	}
+
+	// para la parte 4	
+	method gastar(importe) { 
+		cuentaQueEstaUsando.extraer(importe)
+	}
+	
+	// para la parte 4	
+	method dineroDisponible() { 
+		return cuentaQueEstaUsando.saldo()
+	}
 	
 	method cantidadDeCosasCompradas() {
 		return cosas.size()
@@ -53,14 +64,6 @@ object casaDePepeYJulian {
 		return cosas.filter({ c => c.esComida() }).size() < 2
 	}
 
-
-	method gastar(importe) { 
-		cuentaQueEstaUsando.extraer(importe)
-	}
-	
-	method dineroDisponible() { 
-		return cuentaQueEstaUsando.saldo()
-	}
 
 	// el precio total de la comida comprada por la casa. 
 	// O sea, hay que contemplar solamente las cosas que son comida
